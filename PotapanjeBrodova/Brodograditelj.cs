@@ -14,6 +14,7 @@ namespace PotapanjeBrodova
     {
         public Brodograditelj()
         {
+            //eliminatorPolja = new Klasični
         }
 
         public Flota SložiFlotu(int redaka, int stupaca, int[] duljineBrodova)
