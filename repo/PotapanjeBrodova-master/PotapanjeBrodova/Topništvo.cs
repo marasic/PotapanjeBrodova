@@ -107,7 +107,8 @@ namespace PotapanjeBrodova
             duljineBrodova.Remove(duljinaPotopljenogBroda);
             // akoj je potopljen i zadnji broj, objavi to
             if (duljineBrodova.Count == 0)
-                FlotaPotopljena?.Invoke(this, EventArgs.Empty);
+                if (FlotaPotopljena != null)
+                    FlotaPotopljena(this, EventArgs.Empty);
         }
 
         private void EliminirajPoljaOkoBroda(IEnumerable<Polje> brodskaPolja)
