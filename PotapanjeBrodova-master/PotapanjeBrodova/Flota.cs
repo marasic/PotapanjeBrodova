@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace PotapanjeBrodova
 {
@@ -20,6 +17,17 @@ namespace PotapanjeBrodova
         public int BrojBrodova
         {
             get { return brodovi.Count; }
+        }
+
+        public RezultatGađanja Gađaj(Polje polje)
+        {
+            foreach (Brod b in brodovi)
+            {
+                var rezultat = b.Gađaj(polje);
+                if (rezultat != RezultatGađanja.Promašaj)
+                    return rezultat;
+            }
+            return RezultatGađanja.Promašaj;
         }
 
         List<Brod> brodovi = new List<Brod>();
