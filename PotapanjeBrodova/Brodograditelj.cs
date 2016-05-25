@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace PotapanjeBrodova
 {
@@ -14,11 +12,17 @@ namespace PotapanjeBrodova
     {
         public Brodograditelj()
         {
+<<<<<<< HEAD
             //eliminatorPolja = new Klasični
+=======
+            izbornikPolja = new SlučajniOdabirPočetnogPolja();
+            eliminatorPolja = new KlasičniEliminatorPolja();
+>>>>>>> 768604e6bc8fc3019b2b3706ed47d63e961fd9a7
         }
 
-        public Flota SložiFlotu(int redaka, int stupaca, int[] duljineBrodova)
+        public Brodograditelj(IOdabirPočetnogPoljaZaBrod odabirPočetnogPolja, IEliminatorPolja eliminator)
         {
+<<<<<<< HEAD
             Flota f = new Flota();
             // napravi mrežu
             Mreža m = new Mreža(redaka, stupaca);
@@ -73,30 +77,52 @@ namespace PotapanjeBrodova
         }
 
         public IEnumerable<Polje> DajHorizontalnaPočetnaPolja(IEnumerable<Polje> slobodnaPolja, int duljinaBroda)
-        {
-            List<Polje> polja = new List<Polje>();
-            foreach (Polje p in slobodnaPolja)
-            {
-                if (ImaDovoljnoPoljaDesno(p, slobodnaPolja, duljinaBroda))
-                    polja.Add(p);
-            }
-            return polja;
+=======
+            izbornikPolja = odabirPočetnogPolja;
+            eliminatorPolja = eliminator;
         }
 
+        public Flota SložiFlotu(int redaka, int stupaca, int[] duljineBrodova)
+>>>>>>> 768604e6bc8fc3019b2b3706ed47d63e961fd9a7
+        {
+            const int brojPokušaja = 5;
+            for (int i = 0; i < brojPokušaja; ++i)
+            {
+                try
+                {
+                    Mreža mreža = new Mreža(redaka, stupaca);
+                    return SložiBrodove(duljineBrodova, mreža);
+                }
+                catch (ApplicationException) { }
+            }
+            // ako ne uspije složiti niti nakon 5 pokušaja, baca iznimku
+            throw new ApplicationException();
+        }
+
+<<<<<<< HEAD
        
         public IEnumerable<Polje> DajVertikalnaPočetnaPolja(IEnumerable<Polje> slobodnaPolja, int duljinaBroda)
+=======
+        private Flota SložiBrodove(int[] duljineBrodova, Mreža mreža)
+>>>>>>> 768604e6bc8fc3019b2b3706ed47d63e961fd9a7
         {
-            List<Polje> polja = new List<Polje>();
-            foreach (Polje p in slobodnaPolja)
+            Flota flota = new Flota();
+            // za svaku duljinu broda:
+            for (int i = 0; i < duljineBrodova.Length; ++i)
             {
-                if (ImaDovoljnoPoljaIspod(p, slobodnaPolja, duljinaBroda))
-                    polja.Add(p);
+                var slobodnaPolja = mreža.DajSlobodnaPolja();
+                var pp = izbornikPolja.IzaberiPočetnoPolje(slobodnaPolja, duljineBrodova[i]);
+                var pbr = mreža.DajPoljaZaBrod(pp.Smjer, pp.Polje, duljineBrodova[i]);
+                Brod b = new Brod(pbr);
+                flota.DodajBrod(b);
+                EliminirajPoljaOkoBroda(mreža, pbr);
             }
-            return polja;
+            return flota;
         }
 
-        bool ImaDovoljnoPoljaDesno(Polje p, IEnumerable<Polje> slobodnaPolja, int duljinaBroda)
+        private void EliminirajPoljaOkoBroda(Mreža mreža, IEnumerable<Polje> brodskaPolja)
         {
+<<<<<<< HEAD
             int redak = p.Redak;
             int stupac = p.Stupac;
             for (int s = stupac + 1; s < stupac + duljinaBroda; ++s)
@@ -114,5 +140,14 @@ namespace PotapanjeBrodova
                     return false;
             return true;
         }
+=======
+            IEnumerable<Polje> zaEliminirati = eliminatorPolja.PoljaKojaTrebaUklonitiOkoBroda(brodskaPolja, mreža.Redaka, mreža.Stupaca);
+            foreach (Polje p in zaEliminirati)
+                mreža.EliminirajPolje(p);
+        }
+
+        IOdabirPočetnogPoljaZaBrod izbornikPolja;
+        IEliminatorPolja eliminatorPolja;
+>>>>>>> 768604e6bc8fc3019b2b3706ed47d63e961fd9a7
     }
 }

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PotapanjeBrodova")]
+[assembly: AssemblyTitle("KonzolnaIgra")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PotapanjeBrodova")]
+[assembly: AssemblyProduct("KonzolnaIgra")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("18321674-c091-4bc8-817d-475418bc4b8e")]
+[assembly: Guid("87b33075-1f3a-4d30-be69-92c43271987f")]
 
 // Version information for an assembly consists of the following four values:
 //
