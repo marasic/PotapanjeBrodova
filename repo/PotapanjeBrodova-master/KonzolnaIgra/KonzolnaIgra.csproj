@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18321674-C091-4BC8-817D-475418BC4B8E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{87B33075-1F3A-4D30-BE69-92C43271987F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PotapanjeBrodova</RootNamespace>
-    <AssemblyName>PotapanjeBrodova</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>KonzolnaIgra</RootNamespace>
+    <AssemblyName>KonzolnaIgra</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,24 +39,23 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brod.cs" />
-    <Compile Include="Brodograditelj.cs" />
-    <Compile Include="Flota.cs" />
-    <Compile Include="IEliminatorPolja.cs" />
-    <Compile Include="IOdabirPočetnogPoljaZaBrod.cs" />
-    <Compile Include="IPucač.cs" />
-    <Compile Include="KlasičniEliminatorPolja.cs" />
-    <Compile Include="KružniPucač.cs" />
-    <Compile Include="Mreža.cs" />
-    <Compile Include="Napipač.cs" />
-    <Compile Include="Polje.cs" />
+    <Compile Include="Igra.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SlučajniOdabirPočetnogPolja.cs" />
-    <Compile Include="SustavniPucač.cs" />
-    <Compile Include="Topništvo.cs" />
+    <Compile Include="ProširujućeMetodeZaRedakStupac.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PotapanjeBrodova\PotapanjeBrodova.csproj">
+      <Project>{18321674-c091-4bc8-817d-475418bc4b8e}</Project>
+      <Name>PotapanjeBrodova</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
